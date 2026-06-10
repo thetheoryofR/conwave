@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- CloudKit container identifier — replace with your container from CloudKit Dashboard -->
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.conwave.app</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<false/>
+			<key>NSUbiquitousContainerName</key>
+			<string>Conwave</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>None</string>
+		</dict>
+	</dict>
+	<!-- Required for CKShare accept via URL -->
+	<key>CKSharingSupported</key>
+	<true/>
+	<!-- Required: tell App Store review this app uses only exempt encryption (HTTPS) -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<!-- Camera and microphone — used in Phase 2 -->
+	<key>NSCameraUsageDescription</key>
+	<string>Conwave records your perspective of the show.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Conwave captures audio to sync your clip with other recordings.</string>
+	<!-- Location — used for GPS metadata in Phase 2 -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Conwave uses your location to estimate your distance from the stage for better sync.</string>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
+</plist>
