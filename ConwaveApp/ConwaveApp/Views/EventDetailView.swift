@@ -1,9 +1,11 @@
+import CaptureKit
 import SwiftUI
 
 struct EventDetailView: View {
     let event: Event
     @EnvironmentObject var ck: CloudKitManager
-    @State private var showShareSheet = false
+    @State private var showCapture     = false
+    @State private var recordedClips   = [ClipMetadata]()
 
     var body: some View {
         List {
@@ -52,32 +54,76 @@ struct EventDetailView: View {
                 Text("Share the code or link so others can contribute their clips.")
             }
 
-            // Contributors / clips (Phase 2)
+            // Local clips recorded in this session
             Section("Clips") {
-                ContentUnavailableView {
-                    Label("No clips yet", systemImage: "video.slash")
-                } description: {
-                    Text("Be the first to contribute. Recording is coming in the next update.")
+                if recordedClips.isEmpty {
+                    ContentUnavailableView {
+                        Label("No clips yet", systemImage: "video.slash")
+                    } description: {
+                        Text("Tap "Start Recording" to capture your angle.")
+                    }
+                    .listRowInsets(EdgeInsets())
+                } else {
+                    ForEach(recordedClips) { clip in
+                        ClipRow(clip: clip)
+                    }
                 }
-                .listRowInsets(EdgeInsets())
             }
 
-            // Record button placeholder (Phase 2)
+            // Record button (Phase 2 — live)
             Section {
                 Button {
-                    // Phase 2: open camera capture flow
+                    showCapture = true
                 } label: {
                     Label("Start Recording", systemImage: "record.circle")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(true)
                 .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-            } footer: {
-                Text("Video capture coming in the next update.")
             }
         }
         .navigationTitle(event.title)
         .navigationBarTitleDisplayMode(.large)
+        .fullScreenCover(isPresented: $showCapture) {
+            CaptureView(eventId: event.id) { clip in
+                recordedClips.append(clip)
+            }
+        }
+    }
+}
+
+// MARK: - Clip row
+
+private struct ClipRow: View {
+    let clip: ClipMetadata
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: clip.previewURL != nil ? "video.fill" : "arrow.triangle.2.circlepath")
+                .foregroundStyle(clip.previewURL != nil ? .blue : .orange)
+                .frame(width: 28)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(clip.recordedAt.formatted(date: .omitted, time: .shortened))
+                    .font(.subheadline.weight(.medium))
+                Text(formattedDuration(clip.duration))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            if clip.previewURL == nil {
+                ProgressView()
+                    .scaleEffect(0.8)
+            }
+        }
+        .padding(.vertical, 2)
+    }
+
+    private func formattedDuration(_ s: TimeInterval) -> String {
+        let t = Int(s)
+        let m = t / 60, sec = t % 60
+        return String(format: "%d:%02d", m, sec)
     }
 }

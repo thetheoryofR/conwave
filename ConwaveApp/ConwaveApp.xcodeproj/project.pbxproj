@@ -17,6 +17,8 @@
 		A10000000000000000025A /* JoinEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000001AA /* JoinEventView.swift */; };
 		A10000000000000000026A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000001BA /* EventDetailView.swift */; };
 		A10000000000000000027A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100000000000000000001CA /* Assets.xcassets */; };
+		A100000000000000000002CA /* CaptureKit in Frameworks */ = {isa = PBXBuildFile; productRef = A100000000000000000002BA /* CaptureKit */; };
+		A100000000000000000002FA /* AudioSyncKit in Frameworks */ = {isa = PBXBuildFile; productRef = A100000000000000000002EA /* AudioSyncKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A100000000000000000002CA /* CaptureKit in Frameworks */,
+				A100000000000000000002FA /* AudioSyncKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,10 @@
 			dependencies = (
 			);
 			name = ConwaveApp;
+			packageProductDependencies = (
+				A100000000000000000002BA /* CaptureKit */,
+				A100000000000000000002EA /* AudioSyncKit */,
+			);
 			productName = ConwaveApp;
 			productReference = A10000000000000000012A /* ConwaveApp.app */;
 			productType = "com.apple.product-type.application";
@@ -149,6 +157,10 @@
 				Base,
 			);
 			mainGroup = A100000000000000000000CA;
+			packageReferences = (
+				A100000000000000000002AA /* XCLocalSwiftPackageReference "../../CaptureKit" */,
+				A100000000000000000002DA /* XCLocalSwiftPackageReference "../../AudioSyncKit" */,
+			);
 			productRefGroup = A1000000000000000000011A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -389,6 +401,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A100000000000000000002AA /* XCLocalSwiftPackageReference "../../CaptureKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../CaptureKit;
+		};
+		A100000000000000000002DA /* XCLocalSwiftPackageReference "../../AudioSyncKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../AudioSyncKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A100000000000000000002BA /* CaptureKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100000000000000000002AA /* XCLocalSwiftPackageReference "../../CaptureKit" */;
+			productName = CaptureKit;
+		};
+		A100000000000000000002EA /* AudioSyncKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100000000000000000002DA /* XCLocalSwiftPackageReference "../../AudioSyncKit" */;
+			productName = AudioSyncKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 	};
 	rootObject = A1000000000000000000001A /* Project object */;
