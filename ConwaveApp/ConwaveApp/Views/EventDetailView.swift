@@ -6,6 +6,15 @@ struct EventDetailView: View {
     @EnvironmentObject var ck: CloudKitManager
     @State private var showCapture     = false
     @State private var recordedClips   = [ClipMetadata]()
+    @State private var showEditor      = false
+
+    // Placeholder offsets: evenly spaced until AudioSyncKit alignment runs.
+    // Phase 3 integration will replace this with real Aligner output.
+    private var placeholderAlignedClips: [(clip: ClipMetadata, globalStartMs: Double)] {
+        recordedClips.enumerated().map { idx, clip in
+            (clip: clip, globalStartMs: Double(idx) * 500.0)
+        }
+    }
 
     var body: some View {
         List {
@@ -80,6 +89,19 @@ struct EventDetailView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            }
+
+            // Open editor once 2+ clips are recorded
+            if recordedClips.count >= 2 {
+                Section {
+                    NavigationLink {
+                        SyncEditorView(alignedClips: placeholderAlignedClips)
+                    } label: {
+                        Label("Open Multi-Angle Editor", systemImage: "film.stack")
+                    }
+                } footer: {
+                    Text("Clips are roughly aligned. For precise sync, fingerprinting runs in the background.")
+                }
             }
         }
         .navigationTitle(event.title)

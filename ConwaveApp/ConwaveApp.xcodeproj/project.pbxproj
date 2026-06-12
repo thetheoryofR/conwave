@@ -19,6 +19,10 @@
 		A10000000000000000027A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A100000000000000000001CA /* Assets.xcassets */; };
 		A100000000000000000002CA /* CaptureKit in Frameworks */ = {isa = PBXBuildFile; productRef = A100000000000000000002BA /* CaptureKit */; };
 		A100000000000000000002FA /* AudioSyncKit in Frameworks */ = {isa = PBXBuildFile; productRef = A100000000000000000002EA /* AudioSyncKit */; };
+		A1000000000000000000030A /* PlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = A100000000000000000002FA1 /* PlayerKit */; };
+		A1000000000000000000031A /* SyncEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000028A /* SyncEditorView.swift */; };
+		A1000000000000000000032A /* TimelineScrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000000000000000000029A /* TimelineScrubber.swift */; };
+		A1000000000000000000033A /* TransportBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A100000000000000000002AA1 /* TransportBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,9 @@
 		A10000000000000000019A /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		A100000000000000000001AA /* JoinEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEventView.swift; sourceTree = "<group>"; };
 		A100000000000000000001BA /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
+		A1000000000000000000028A /* SyncEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEditorView.swift; sourceTree = "<group>"; };
+		A1000000000000000000029A /* TimelineScrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineScrubber.swift; sourceTree = "<group>"; };
+		A100000000000000000002AA1 /* TransportBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportBar.swift; sourceTree = "<group>"; };
 		A100000000000000000001CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A100000000000000000001DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A100000000000000000001EA /* ConwaveApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConwaveApp.entitlements; sourceTree = "<group>"; };
@@ -44,6 +51,7 @@
 			files = (
 				A100000000000000000002CA /* CaptureKit in Frameworks */,
 				A100000000000000000002FA /* AudioSyncKit in Frameworks */,
+				A1000000000000000000030A /* PlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +105,9 @@
 				A10000000000000000019A /* CreateEventView.swift */,
 				A100000000000000000001AA /* JoinEventView.swift */,
 				A100000000000000000001BA /* EventDetailView.swift */,
+				A1000000000000000000028A /* SyncEditorView.swift */,
+				A1000000000000000000029A /* TimelineScrubber.swift */,
+				A100000000000000000002AA1 /* TransportBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +139,7 @@
 			packageProductDependencies = (
 				A100000000000000000002BA /* CaptureKit */,
 				A100000000000000000002EA /* AudioSyncKit */,
+				A100000000000000000002FA1 /* PlayerKit */,
 			);
 			productName = ConwaveApp;
 			productReference = A10000000000000000012A /* ConwaveApp.app */;
@@ -160,6 +172,7 @@
 			packageReferences = (
 				A100000000000000000002AA /* XCLocalSwiftPackageReference "../../CaptureKit" */,
 				A100000000000000000002DA /* XCLocalSwiftPackageReference "../../AudioSyncKit" */,
+				A100000000000000000002EA1 /* XCLocalSwiftPackageReference "../../PlayerKit" */,
 			);
 			productRefGroup = A1000000000000000000011A /* Products */;
 			projectDirPath = "";
@@ -195,6 +208,9 @@
 				A10000000000000000024A /* CreateEventView.swift in Sources */,
 				A10000000000000000025A /* JoinEventView.swift in Sources */,
 				A10000000000000000026A /* EventDetailView.swift in Sources */,
+				A1000000000000000000031A /* SyncEditorView.swift in Sources */,
+				A1000000000000000000032A /* TimelineScrubber.swift in Sources */,
+				A1000000000000000000033A /* TransportBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +427,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../AudioSyncKit;
 		};
+		A100000000000000000002EA1 /* XCLocalSwiftPackageReference "../../PlayerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../PlayerKit;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -423,6 +443,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A100000000000000000002DA /* XCLocalSwiftPackageReference "../../AudioSyncKit" */;
 			productName = AudioSyncKit;
+		};
+		A100000000000000000002FA1 /* PlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A100000000000000000002EA1 /* XCLocalSwiftPackageReference "../../PlayerKit" */;
+			productName = PlayerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
